@@ -1,0 +1,39 @@
+var name1 = "adam";
+var name2 = "eve";
+striCompare(name1, name2);
+//compare
+function striCompare(name_1, name_2) {
+    name_1= name_1.toUpperCase().trim();
+    name_2 = name_2.toUpperCase().trim();
+    //remove the duplicate elements
+    for (let i=0;i<name_1.length;i++) {
+        for(let j=0;j<name_2.length;j++) {
+            if (name_1.charAt(i) == name_2.charAt(j)) {
+                name_1=(name_1.replace(name_1.charAt(i).toString(), ""));
+                name_2=(name_2.replace(name_2.charAt(j).toString(), ""));
+                //to iterate from first with non removed char
+               i=0;j=0;
+            }
+        }
+    }
+    var nonDuplicateCar = (name_1+""+ name_2);
+    var flames = "FLAMES";
+    while(flames.length != 1) {
+        var rm_chr = nonDuplicateCar.length%flames.length;
+        if (rm_chr != 0) {
+            flames = flames.substring(rm_chr)+flames.substring(0, rm_chr-1);
+        } else {
+            flames = flames.substring(0, flames.length-1);
+        }
+    }
+    
+    switch(flames) {
+        case "F" :console.log("Friendship");break;
+        case "L" :console.log("Love");break;
+        case "A" :console.log("Affection");break;
+        case "M" :console.log("Marriage");break;
+        case "E" :console.log("Enemy");break;
+        case "S" :console.log("Sister");break;
+    }
+    // console.log(flames);
+}
